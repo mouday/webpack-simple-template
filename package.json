@@ -1,9 +1,9 @@
 {
-  "name": "web-demo",
+  "name": "webpack-simple-template",
   "version": "1.0.0",
-  "description": "",
+  "description": "webpack simple template",
   "private": true,
-  "main": "webpack.config.js",
+  "main": "",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack serve --config webpack.config.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.js"
