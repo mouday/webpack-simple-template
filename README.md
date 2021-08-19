@@ -7,3 +7,6 @@
 - js: ES6
 - css: less sass
 - Vue
+
+> 参考配置
+> [https://webpack.docschina.org/configuration/](https://webpack.docschina.org/configuration/)
