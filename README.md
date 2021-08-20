@@ -8,5 +8,28 @@
 - css: less sass
 - Vue
 
+## 快速开始
+
+方式一
+
+```bash
+# 1、下载解压
+wget https://github.com/mouday/webpack-simple-template/archive/refs/heads/master.zip -O webpack-simple-template.zip && \
+tar -xvf webpack-simple-template.zip
+
+# 2、安装依赖
+cd webpack-simple-template-master && \
+cnpm i
+
+# 或者指定下载源
+# npm i --registry=https://registry.npm.taobao.org
+
+# 3、开发
+npm run dev
+
+# 打包
+npm run build
+```
+
 > 参考配置
 > [https://webpack.docschina.org/configuration/](https://webpack.docschina.org/configuration/)
