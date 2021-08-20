@@ -10,8 +10,6 @@
 
 ## 快速开始
 
-方式一
-
 ```bash
 # 下载解压 安装依赖
 wget https://github.com/mouday/webpack-simple-template/archive/refs/heads/master.zip -O webpack-simple-template.zip && \
