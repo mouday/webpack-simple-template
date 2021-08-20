@@ -13,18 +13,16 @@
 方式一
 
 ```bash
-# 1、下载解压
+# 下载解压 安装依赖
 wget https://github.com/mouday/webpack-simple-template/archive/refs/heads/master.zip -O webpack-simple-template.zip && \
-tar -xvf webpack-simple-template.zip
-
-# 2、安装依赖
+tar -xvf webpack-simple-template.zip && \
 cd webpack-simple-template-master && \
 cnpm i
 
 # 或者指定下载源
 # npm i --registry=https://registry.npm.taobao.org
 
-# 3、开发
+# 开发
 npm run dev
 
 # 打包
