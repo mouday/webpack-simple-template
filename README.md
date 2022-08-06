@@ -6,7 +6,7 @@
 
 - js: ES6
 - css: less sass
-- Vue
+- Vue@2.7.8
 
 ## 快速开始
 
@@ -15,7 +15,7 @@
 wget https://github.com/mouday/webpack-simple-template/archive/refs/heads/master.zip -O webpack-simple-template.zip && \
 tar -xvf webpack-simple-template.zip && \
 cd webpack-simple-template-master && \
-cnpm i
+pnpm i
 
 # 或者指定下载源
 # npm i --registry=https://registry.npm.taobao.org
