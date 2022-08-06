@@ -107,6 +107,7 @@ module.exports = {
           },
         ],
       },
+      
       // vue
       {
         test: /\.vue$/,
