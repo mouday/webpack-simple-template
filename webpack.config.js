@@ -1,15 +1,15 @@
-'use strict';
+'use strict'
 
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { VueLoaderPlugin } = require('vue-loader');
+const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
 
 // 检查环境
 function is_dev() {
-  return process.env.NODE_ENV === 'development';
+  return process.env.NODE_ENV === 'development'
 }
 
 // css 公共 loaders
@@ -17,7 +17,7 @@ const cssLoaders = [
   is_dev() ? 'vue-style-loader' : MiniCssExtractPlugin.loader,
   'css-loader',
   'postcss-loader',
-];
+]
 
 module.exports = {
   // 打包入口
@@ -26,9 +26,11 @@ module.exports = {
   // 指定输出地址及打包出来的文件名
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name].js',
+    filename: 'js/[name].[contenthash:6].js',
     clean: true, // 每次构建前清理 /dist 文件夹
     // futureEmitAssets: false
+    // 自定义资源文件名
+    assetModuleFilename: 'images/[name].[hash:6][ext][query]',
   },
 
   // 配置引入别名
@@ -78,20 +80,20 @@ module.exports = {
         use: [...cssLoaders, 'sass-loader'],
       },
 
-      // 图片
-      {
-        test: /\.(jpg|png|gif|jpeg)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              // 如果图片大小小于这个值，就会被打包为base64格式
-              limit: 10 * 1000, // 10 kb
-              name: 'imgs/[name].[hash].[ext]',
-            },
-          },
-        ],
-      },
+      // 图片 webpack4
+      // {
+      //   test: /\.(jpg|png|gif|jpeg)$/,
+      //   use: [
+      //     {
+      //       loader: 'url-loader',
+      //       options: {
+      //         // 如果图片大小小于这个值，就会被打包为base64格式
+      //         limit: 10 * 1000, // 10 kb
+      //         name: 'imgs/[name].[hash].[ext]',
+      //       },
+      //     },
+      //   ],
+      // },
 
       // js 需要进行语法转换
       {
@@ -107,11 +109,23 @@ module.exports = {
           },
         ],
       },
-      
+
       // vue
       {
         test: /\.vue$/,
         use: ['vue-loader'],
+      },
+
+      // 处理资源文件 webpack5
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        // 默认: 小于 8kb 的文件，将会视为 inline 模块类型，否则会被视为 resource 模块类型。
+        type: 'asset',
+      },
+      // 加载 fonts 字体
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
       },
     ],
   },
@@ -140,4 +154,4 @@ module.exports = {
       new TerserPlugin(),
     ],
   },
-};
+}

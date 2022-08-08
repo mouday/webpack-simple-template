@@ -7,6 +7,7 @@
 - js: ES6
 - css: less sass
 - Vue@2.7.8
+- 静态资源引入
 
 ## 快速开始
 
